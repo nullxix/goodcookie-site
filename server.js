@@ -4,7 +4,6 @@ const mustache = require('mustache-express')
 require('dotenv').config()
 const {PORT, DOMAIN, COOKIE_KEY, COOKIE_VALUE} = process.env
 
-
 app.engine('html', mustache());
  
 app.set('view engine', 'html');

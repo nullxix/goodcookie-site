@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>making cookies better</title>
-    <link href='/styles/tools.css' rel='stylesheet'>
-    <link href='/styles/global.css' rel='stylesheet'>
+    <link href='{{domain}}/styles/tools.css' rel='stylesheet'>
+    <link href='{{domain}}/styles/global.css' rel='stylesheet'>
 </head>
 <body class='veggie'>
     <header class='header meat'>
@@ -38,6 +38,7 @@
     </div>
 
     <script>
+	    console.log({{domain}})
         const butter = document.getElementById('THETRUEBUTTON')
         let listenerWindow = undefined
         window.addEventListener('message', event => {

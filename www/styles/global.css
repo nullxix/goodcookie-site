@@ -1,0 +1,80 @@
+:root{
+    --meat-bg: rgb(177, 100, 37);
+    --meat-text: rgb(48, 29, 16);
+    --veggie-bg: rgb(252, 237, 209);
+    --veggie-strong: black;
+    --veggie-text: rgb(100, 81, 56);
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    margin: 0;
+    padding: 30px;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav > span{
+    padding: 5px 10px;
+}
+
+.title {
+    font-size: 32px;
+}
+.container {
+    width: 60%;
+    margin: auto;
+}
+
+.meat {
+    background: var(--meat-bg);
+    color: var(--meat-text);
+}
+
+.veggie {
+    background: var(--veggie-bg);
+    color: var(--veggie-strong);
+}
+
+#THETRUEBUTTON {
+    font-size: 24px;
+    text-align: center;
+    background: var(--meat-bg);
+    color: var(--veggie-bg);
+}
+
+#content {
+    padding-top: 20px;
+}
+
+.center-contents.column {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    text-align: center;
+}
+
+.brick {
+    height: 20px;
+}
+
+summary {
+    outline: none;
+    /* 
+        this eliminates the blue box that 
+        shows when you select them
+    */
+}
+
+details {
+    color: var(--meat-text)
+}

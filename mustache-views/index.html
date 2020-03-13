@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>making cookies better</title>
+    <link href='/styles/tools.css' rel='stylesheet'>
+    <link href='/styles/global.css' rel='stylesheet'>
+</head>
+<body class='veggie'>
+    <header class='header meat'>
+        <h1 class='title'>goodcookie</h1>
+        <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
+    </header>
+    
+    <div id='content' class='veggie container'>
+        <div class='center-contents column'>
+                <button id='THETRUEBUTTON'>allow ALL cookies on ALL websites</button> 
+        </div>
+        <br/>     
+        <br/>  
+        <details class='container'>
+            <summary>what this is</summary>
+                <div id='explanation'>clicking this button sets a cookie that says 'I accept cookies' so websites won't have to ask you anymore</div>
+                <div class='brick'></div>
+                <div>websites must opt-in before this works on their website</div>
+        </details>
+        <br/>
+        <details class='container'>
+            <summary>why we built this</summary>
+            <ol>
+                <li> make web browsing clean & seemless</li>
+                <a> ⟶ learn more</a>
+                <li> encourage industry self-regulation</li>
+                <a> ⟶ learn more</a>
+            </ol>
+        </details>
+    </div>
+
+    <script>
+        const butter = document.getElementById('THETRUEBUTTON')
+        let listenerWindow = undefined
+        window.addEventListener('message', event => {
+            console.log('message received')
+            console.log(event.target.data)
+            if(event.data.includes('pastamarmalade')){
+                listenerWindow = event.target.source
+            }
+        })
+        butter.addEventListener('click', () => {
+            const expire = new Date(Date.now() + (1.5 * 365 * 24 * 60 * 60 * 1000)).toUTCString()
+            document.cookie = `{{cookieKey}}={{cookieValue}}; expires=${expire};`
+            
+            sendAcceptMessage()
+        })
+        function sendAcceptMessage(){
+            console.log('sending!')
+            let origin = '*'
+            window.opener.postMessage('{{acceptMessage}}', origin)
+            console.log('message sent!')
+        }
+    </script>
+</body>
+</html>

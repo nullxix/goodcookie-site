@@ -4,8 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goodcookie - docs</title>
+    <link rel='stylesheet' href='../www/styles/global.css'/>
 </head>
 <body>
-    {{domain}}
+    <header class='header meat'>
+        <h1 class='title'>goodcookie</h1>
+        <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
+    </header>
+
+<h2>Opting a user in to the program.</h2>
+
+Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
+We've made a script to simplify the process
+
+<h3>The easy way: </h3>
+--------------------------------------------------
+include the goodclient cdn in your page.
+
+register actions to be performed if the user opts in
+
+goodclient.onAccept(function)
+
+you can register multiple actions at once
+registered functions are run in the order they're registered
+
+goodclient.onAccept(function1, function 2, function 3)
+
+or register multiple actions at different times
+
+goodclient.onAccept(function1)
+//do something else
+goodclient.onAccept(function2)
+
+both function 1 & function 2 will run if the user accepts
+
+
+<h3>The hard way</h3>
+---------------------------------------------------
+I can't remember exactly how this works BRB
+
+open the page
+send a message to the page (might be unnecessary)
+listen for the following messages
+
+
+
+
+<h2>Checking if a user has opted-in</h2>
+-----------------------------------------------------------
+Users can be verified by redirecting req to goodcookie. Goodcookie then redirects to a new url based on their cookie policy
+
+redirect a  user to
+nick.pink/goodcookie/verify/bounce
+with the following parameters:
+
+acceptURL = url 2 send 2
+undeclared URL = url 2 send 2
+
+
+code examples:
+
+<div class='code'>
+ <label class='code-label'>express node</label>
+    const url = require('url'),
+        app require('express')(),
+        cookieParser = require('cookie-parser')
+
+    app.get('/accept', (req, res) => {
+        //save a cookie
+    })
+    app.get('/undeclared', (req, res) => {
+        //prompt user about cookies
+    })
+    app.get('/', (req, res) => {
+        res.redirect(url.format({
+            pathname: 'https://nick.pink/goodcookie/verify/bounce',
+            query: {
+                    acceptURL: 'https://mywebsite.io/accept',
+                    undeclaredURL: 'https://mywebsite.io/undeclared'
+            }
+    })
+</div>
+
+<div class='code'>
+    <label class='code-label'>nginx</label>
+
+    nginx COOOODE
+</div>
+
+<div class='code'>
+    <label class='code-label'>django</label>
+
+    there's probs a library for formatting code
+</div>
+
+<div class='code'>
+    <label class='code-label'>php</label>
+
+    php
+</div>
+
+<div class='code'>
+    <label class='code-label'>ruby</label>
+
+    ruby
+</div>
+
+We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
+
+<hr>
+
+Many browsers and users are moving to block 3rd party cookies by default.
+If you're bold, goodcookie allows verification via 3rd-party cookies, for compatible browsers.
+
+
+send a GET request to
+nick.pink/goodcookie/verify
+
+If the users have opted in, you will receive
+//Thing
+Otherwise you will receive
+//Other thing
+
+Code examples
+<div class='code'>
+    <label class='code-label'>fetch</label>
+
+</div>
+<div class='code'>
+    <label class='code-label'>xhttprequest</label>
+
+    nginx COOOODE
+</div>
+<div class='code'>
+    <label class='code-label'>hidden form</label>
+
+    nginx COOOODE
+</div>
 </body>
 </html>

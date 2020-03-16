@@ -26,6 +26,7 @@
                 <div class='brick'></div>
                 <div>websites must opt-in before this works on their website</div>
         </details>
+	BWABAEFET
         <br/>
         <details class='container'>
             <summary>why we built this</summary>
@@ -39,7 +40,9 @@
     </div>
 
     <script>
-        const butter = document.getElementById('THETRUEBUTTON')
+	console.log('000000')
+	console.log('{{cookieKey}}', '{{cookieValue}}')
+	const butter = document.getElementById('THETRUEBUTTON')
         let listenerWindow = undefined
         window.addEventListener('message', event => {
             console.log('message received')
@@ -50,7 +53,7 @@
         })
         butter.addEventListener('click', () => {
             const expire = new Date(Date.now() + (1.5 * 365 * 24 * 60 * 60 * 1000)).toUTCString()
-            document.cookie = `{{cookieKey}}={{cookieValue}}; expires=${expire};`
+		document.cookie = `{{cookieKey}}={{cookieValue}}; secure; samesite=none; domain=nick.pink; path=/; expires=${expire};`
             
             sendAcceptMessage()
         })

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goodcookie - docs</title>
     <link rel='stylesheet' href='../www/styles/global.css'/>
+    <link href="../www/styles/prism.css" rel="stylesheet" />
 </head>
 <body>
     <header class='header meat'>
         <h1 class='title'>goodcookie</h1>
         <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
     </header>
-
+<pre>
 <h2>Opting a user in to the program.</h2>
 
 Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
@@ -63,9 +64,12 @@ undeclared URL = url 2 send 2
 
 
 code examples:
+</pre>
+<div class='code-label'>express node</div>
+<pre>
+<code contenteditable spellcheck="false" class='code language-js'>
+express node
 
-<div class='code'>
- <label class='code-label'>express node</label>
     const url = require('url'),
         app require('express')(),
         cookieParser = require('cookie-parser')
@@ -84,32 +88,45 @@ code examples:
                     undeclaredURL: 'https://mywebsite.io/undeclared'
             }
     })
-</div>
+</code>
+</pre>
+<div class='code-label'>nginx</div>
+<pre>
+<code contenteditable spellcheck="false" class='code language-nginx'>
+nginx
 
-<div class='code'>
-    <label class='code-label'>nginx</label>
+    server {
+        cookies eat;
 
-    nginx COOOODE
-</div>
+        location / {
+            return 301 www.google.com
+        }
+    }
+</code>
+</pre>
+<div class='code-label'>django</div>
+<pre>
+<code contenteditable spellcheck="false" class='code language-python'>
+django
 
-<div class='code'>
-    <label class='code-label'>django</label>
+    from django.http import HttpResponse
 
-    there's probs a library for formatting code
-</div>
+    def homePageView(request):
+        return HttpResponse('Hello, World!')
+</code>
+</pre>
+<div class='code-label'>ruby</div>
+<pre>
+<code contenteditable spellcheck="false" class='code language-ruby'>
+ruby on rails
 
-<div class='code'>
-    <label class='code-label'>php</label>
-
-    php
-</div>
-
-<div class='code'>
-    <label class='code-label'>ruby</label>
-
-    ruby
-</div>
-
+    class PagesController < ApplicationController
+        def home
+        puts "Honey, I'm home!"
+        end
+    end
+</code>
+</pre>
 We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
 
 <hr>
@@ -127,19 +144,20 @@ Otherwise you will receive
 //Other thing
 
 Code examples
-<div class='code'>
-    <label class='code-label'>fetch</label>
+<div class='code-label'>fetch</div>
+<code contenteditable spellcheck="false"  class='code language-js'>
 
-</div>
-<div class='code'>
-    <label class='code-label'>xhttprequest</label>
-
-    nginx COOOODE
-</div>
-<div class='code'>
-    <label class='code-label'>hidden form</label>
+</code>
+<div class='code-label'>xhttprequest</div>
+<code contenteditable spellcheck="false"  class='code language-js'>
 
     nginx COOOODE
-</div>
+</code>
+<div class='code-label'>hidden form</div>
+<code contenteditable spellcheck="false" class='code language-html'>
+
+    nginx COOOODE
+</code>
+<script src="../www/js/prism.js"></script>
 </body>
 </html>

@@ -14,16 +14,20 @@
         <h1 class='title'>goodcookie</h1>
         <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
     </header>
-<pre>
-<h2>Opting a user in to the program.</h2>
+
+<div class='container'>
+    <h2>Opting a user in to the program.</h2>
 
 Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
 We've made a script to simplify the process
+</div>
 <div is='drop-down' label-text='> the easy way'>
 <div>
-    <h3>THE EASY WAY</h3>
-    --------------------------------------------------
-    include the goodclient cdn in your page.
+    <div class='container'>
+
+        <h3>THE EASY WAY</h3>
+        include the goodclient cdn in your page.
+    </div>
 
     <div>vanilla js/html</div>
     <pre>
@@ -33,7 +37,9 @@ We've made a script to simplify the process
         </code>
     </pre>
 
+    <div class='container'>
     register actions to be performed if the user opts in
+    </div>
 
     <pre>
         <code class='language-js'>
@@ -41,8 +47,10 @@ We've made a script to simplify the process
         </code>
     </pre>
 
+    <div class='container'>
     you can register multiple actions at once
     registered functions are run in the order they're registered
+    </div>
 
     <pre>
         <code class='language-js'>
@@ -50,7 +58,10 @@ We've made a script to simplify the process
             //runs func1, then func2, then func3
         </code>
     </pre>
+
+    <div class='container'>
     or register multiple actions at different times
+    </div>
 
     <pre>
         <code class='language-js'>
@@ -60,8 +71,11 @@ We've made a script to simplify the process
             //runs func1 then func2
         </code>
     </pre>
-
+    
+    <div class='container'>  
     when the user decides they're sick of cookie questions
+    </div>
+
     <pre>
         <code class='language-js'>
             //clicking this button opens goodcookie in another page
@@ -76,8 +90,11 @@ We've made a script to simplify the process
 </div>
 <div is='drop-down' label-text='> the hard way'>
 <div>
+
+    <div class='container'>
     <h3>THE HARD WAY</h3>
     it's actually easier
+    </div>
 
     <pre>
         <code class='language-js'>
@@ -98,8 +115,8 @@ We've made a script to simplify the process
 </div>
 
 
-<h2>Checking if a user has opted-in</h2>
------------------------------------------------------------
+<div class='container'>
+    <h2>Checking if a user has opted-in</h2>
 Users can be verified by redirecting req to goodcookie. Goodcookie then redirects to a new url based on their cookie policy
 
 redirect a  user to
@@ -111,14 +128,16 @@ undeclared URL = url 2 send 2
 
 
 We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
-</pre>
-code examples:
+
+
+<h3>code examples:</h3>
+</div>
+
 <div is='drop-down' label-text='> express / node'>
 <div>
 
     <pre>
     <code contenteditable spellcheck="false" class='code language-js'>
-
         const url = require('url'),
             app require('express')(),
             cookieParser = require('cookie-parser')
@@ -145,7 +164,6 @@ code examples:
 <div>
     <pre>
     <code contenteditable spellcheck="false" class='code language-nginx'>
-
         server {
             cookies eat;
 
@@ -186,7 +204,7 @@ code examples:
 </div>
 
 <hr>
-
+<div class='container'>
 Many browsers and users are moving to block 3rd party cookies by default.
 If you're bold, goodcookie allows verification via 3rd-party cookies, for compatible browsers.
 
@@ -200,6 +218,7 @@ Otherwise you will receive
 //Other thing
 
 Code examples
+</div>
 <div class='code-label'>fetch</div>
 <pre>
     <code contenteditable spellcheck="false"  class='code language-js'>

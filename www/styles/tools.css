@@ -5,7 +5,13 @@
 
 */
 
+.drop-down-container {
+    margin: 0;
+    padding: 0
+}
+
 .dropper-label {
+    box-sizing: border-box;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
@@ -44,3 +50,9 @@
     END DROP-DOWN STUFF
 
 */
+
+
+.container {
+    width: 70%;
+    margin: auto;
+}

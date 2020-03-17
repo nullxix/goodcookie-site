@@ -6,6 +6,7 @@
     <title>goodcookie - docs</title>
     <link rel='stylesheet' href='../www/styles/global.css'/>
     <link href="../www/styles/prism.css" rel="stylesheet" />
+    <link href="../www/styles/tools.css"/>
 </head>
 <body>
     <header class='header meat'>
@@ -22,33 +23,73 @@ We've made a script to simplify the process
 --------------------------------------------------
 include the goodclient cdn in your page.
 
+<div>vanilla js/html</div>
+<pre>
+    <code class='language-html'>
+        &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
+        &lt;script src='my-script.js'&gt;&lt;/script&gt;
+    </code>
+</pre>
+
 register actions to be performed if the user opts in
 
-goodclient.onAccept(function)
+<pre>
+    <code class='language-js'>
+        goodclient.onAccept(function)
+    </code>
+</pre>
 
 you can register multiple actions at once
 registered functions are run in the order they're registered
 
-goodclient.onAccept(function1, function 2, function 3)
-
+<pre>
+    <code class='language-js'>
+        goodclient.onAccept(func1, func2, func3)
+        //runs func1, then func2, then func3
+    </code>
+</pre>
 or register multiple actions at different times
 
-goodclient.onAccept(function1)
-//do something else
-goodclient.onAccept(function2)
+<pre>
+    <code class='language-js'>
+        goodclient.onAccept(func1)
+        //do something else
+        goodclient.onAccept(func2)
+        //runs func1 then func2
+    </code>
+</pre>
 
-both function 1 & function 2 will run if the user accepts
-
+when the user decides they're sick of cookie questions
+<pre>
+    <code class='language-js'>
+        //clicking this button opens goodcookie in another page
+        document.getElementById('i-like-cookies')
+                .addEventListener('click', event => {
+                    goodclient.optIn()
+                }))
+        //if user opts in, all onAccept functions that were registered will be run
+    </code>
+</pre>
 
 <h3>The hard way</h3>
 ---------------------------------------------------
-I can't remember exactly how this works BRB
+it's actually easier
 
-open the page
-send a message to the page (might be unnecessary)
-listen for the following messages
+<pre>
+    <code class='language-js'>
+        //open goodcookie in a new browser tab
+        function optIn()) => {
+            listenForPost()
+            window.open('https://nick.pink/goodcookie')
+        }
 
-
+        //if the user opts in, goodcookie will send a message back
+        window.onmessage = event => {
+            if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
+                //save a cookie
+        }
+    </code>
+</pre>
 
 
 <h2>Checking if a user has opted-in</h2>

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goodcookie - docs</title>
-    <link rel='stylesheet' href='../www/styles/global.css'/>
+    <link href='../www/styles/global.css' rel='stylesheet' />
     <link href="../www/styles/prism.css" rel="stylesheet" />
-    <link href="../www/styles/tools.css"/>
+    <link href="../www/styles/tools.css" rel='stylesheet' />
+    <script src="../www/js/custom-elements.js" defer></script>
 </head>
 <body>
     <header class='header meat'>
@@ -18,78 +19,83 @@
 
 Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
 We've made a script to simplify the process
+<div is='drop-down' label-text='> the easy way'>
+<div>
+    <h3>THE EASY WAY</h3>
+    --------------------------------------------------
+    include the goodclient cdn in your page.
 
-<h3>The easy way: </h3>
---------------------------------------------------
-include the goodclient cdn in your page.
+    <div>vanilla js/html</div>
+    <pre>
+        <code class='language-html'>
+            &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
+            &lt;script src='my-script.js'&gt;&lt;/script&gt;
+        </code>
+    </pre>
 
-<div>vanilla js/html</div>
-<pre>
-    <code class='language-html'>
-        &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
-        &lt;script src='my-script.js'&gt;&lt;/script&gt;
-    </code>
-</pre>
+    register actions to be performed if the user opts in
 
-register actions to be performed if the user opts in
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(function)
+        </code>
+    </pre>
 
-<pre>
-    <code class='language-js'>
-        goodclient.onAccept(function)
-    </code>
-</pre>
+    you can register multiple actions at once
+    registered functions are run in the order they're registered
 
-you can register multiple actions at once
-registered functions are run in the order they're registered
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(func1, func2, func3)
+            //runs func1, then func2, then func3
+        </code>
+    </pre>
+    or register multiple actions at different times
 
-<pre>
-    <code class='language-js'>
-        goodclient.onAccept(func1, func2, func3)
-        //runs func1, then func2, then func3
-    </code>
-</pre>
-or register multiple actions at different times
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(func1)
+            //do something else
+            goodclient.onAccept(func2)
+            //runs func1 then func2
+        </code>
+    </pre>
 
-<pre>
-    <code class='language-js'>
-        goodclient.onAccept(func1)
-        //do something else
-        goodclient.onAccept(func2)
-        //runs func1 then func2
-    </code>
-</pre>
+    when the user decides they're sick of cookie questions
+    <pre>
+        <code class='language-js'>
+            //clicking this button opens goodcookie in another page
+            document.getElementById('i-like-cookies')
+                    .addEventListener('click', event => {
+                        goodclient.optIn()
+                    }))
+            //if user opts in, all onAccept functions that were registered will be run
+        </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> the hard way'>
+<div>
+    <h3>THE HARD WAY</h3>
+    it's actually easier
 
-when the user decides they're sick of cookie questions
-<pre>
-    <code class='language-js'>
-        //clicking this button opens goodcookie in another page
-        document.getElementById('i-like-cookies')
-                .addEventListener('click', event => {
-                    goodclient.optIn()
-                }))
-        //if user opts in, all onAccept functions that were registered will be run
-    </code>
-</pre>
+    <pre>
+        <code class='language-js'>
+            //open goodcookie in a new browser tab
+            function optIn()) => {
+                listenForPost()
+                window.open('https://nick.pink/goodcookie')
+            }
 
-<h3>The hard way</h3>
----------------------------------------------------
-it's actually easier
-
-<pre>
-    <code class='language-js'>
-        //open goodcookie in a new browser tab
-        function optIn()) => {
-            listenForPost()
-            window.open('https://nick.pink/goodcookie')
-        }
-
-        //if the user opts in, goodcookie will send a message back
-        window.onmessage = event => {
-            if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
-                //save a cookie
-        }
-    </code>
-</pre>
+            //if the user opts in, goodcookie will send a message back
+            window.onmessage = event => {
+                if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
+                    //save a cookie
+            }
+        </code>
+    </pre>
+</div>
+</div>
 
 
 <h2>Checking if a user has opted-in</h2>
@@ -104,71 +110,88 @@ acceptURL = url 2 send 2
 undeclared URL = url 2 send 2
 
 
-code examples:
-</pre>
-<div class='code-label'>express node</div>
-<pre>
-<code contenteditable spellcheck="false" class='code language-js'>
-express node
-
-    const url = require('url'),
-        app require('express')(),
-        cookieParser = require('cookie-parser')
-
-    app.get('/accept', (req, res) => {
-        //save a cookie
-    })
-    app.get('/undeclared', (req, res) => {
-        //prompt user about cookies
-    })
-    app.get('/', (req, res) => {
-        res.redirect(url.format({
-            pathname: 'https://nick.pink/goodcookie/verify/bounce',
-            query: {
-                    acceptURL: 'https://mywebsite.io/accept',
-                    undeclaredURL: 'https://mywebsite.io/undeclared'
-            }
-    })
-</code>
-</pre>
-<div class='code-label'>nginx</div>
-<pre>
-<code contenteditable spellcheck="false" class='code language-nginx'>
-nginx
-
-    server {
-        cookies eat;
-
-        location / {
-            return 301 www.google.com
-        }
-    }
-</code>
-</pre>
-<div class='code-label'>django</div>
-<pre>
-<code contenteditable spellcheck="false" class='code language-python'>
-django
-
-    from django.http import HttpResponse
-
-    def homePageView(request):
-        return HttpResponse('Hello, World!')
-</code>
-</pre>
-<div class='code-label'>ruby</div>
-<pre>
-<code contenteditable spellcheck="false" class='code language-ruby'>
-ruby on rails
-
-    class PagesController < ApplicationController
-        def home
-        puts "Honey, I'm home!"
-        end
-    end
-</code>
-</pre>
 We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
+</pre>
+code examples:
+<div is='drop-down' label-text='> express / node'>
+<div>
+    
+    <div class='code-label'>express node</div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-js'>
+    express node
+
+        const url = require('url'),
+            app require('express')(),
+            cookieParser = require('cookie-parser')
+
+        app.get('/accept', (req, res) => {
+            //save a cookie
+        })
+        app.get('/undeclared', (req, res) => {
+            //prompt user about cookies
+        })
+        app.get('/', (req, res) => {
+            res.redirect(url.format({
+                pathname: 'https://nick.pink/goodcookie/verify/bounce',
+                query: {
+                        acceptURL: 'https://mywebsite.io/accept',
+                        undeclaredURL: 'https://mywebsite.io/undeclared'
+                }
+        })
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> nginx'>
+<div>
+    <div class='code-label'>nginx</div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-nginx'>
+    nginx
+
+        server {
+            cookies eat;
+
+            location / {
+                return 301 www.google.com
+            }
+        }
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> django'>
+<div>
+    <div class='code-label'>django</div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-python'>
+    django
+
+        from django.http import HttpResponse
+
+        def homePageView(request):
+            return HttpResponse('Hello, World!')
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> ruby on rails'>
+<div>
+    <div class='code-label'>ruby</div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-ruby'>
+    ruby on rails
+
+        class PagesController < ApplicationController
+            def home
+            puts "Honey, I'm home!"
+            end
+        end
+    </code>
+    </pre>
+</div>
+</div>
 
 <hr>
 

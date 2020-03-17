@@ -10,8 +10,8 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; 
-    background: black;
-    color: white;
+    background: rgb(41, 41, 41);
+    color: rgb(224, 224, 224);
     font-size: 24px;
     padding: 25px;
     width: 100%;

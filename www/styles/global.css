@@ -217,7 +217,7 @@ details {
     }
 }
 
-@media(max-height: 900px){
+@media(max-height: 900px) and (max-width: 900px){
     .title{
         right: 15px;
         top: 5px;

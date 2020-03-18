@@ -31,6 +31,7 @@ body, html {
     left: 30px;
     bottom: 30px;
     z-index: 1;
+    font-size: 16px;
 }
 
 .nav > span{
@@ -105,8 +106,6 @@ body, html {
     background-color: #F2F2F2;
     overflow: hidden;
     overflow-y: hidden;
-
-    transition: .5s;
 }
 
 .center-contents.column {
@@ -151,8 +150,6 @@ details {
     letter-spacing: -9px;
     top: -50px;
     user-select: none;
-
-    transition: .2s;
 }
 
 
@@ -221,8 +218,16 @@ details {
 }
 
 @media(max-height: 900px){
+    .title{
+        right: 15px;
+        top: 5px;
+    }
+    .gargantuan-text{
+        visibility: hidden;
+    }
     #content{
-        height: 45vh;
+        height: 100vh;
+        overflow: visible;
     }
     details{
         width: 90%;
@@ -236,7 +241,8 @@ details {
         right: 25px;
     }
     .nav{
-        left: 15px;
-        bottom: 15px;
+        left: 5px;
+        bottom: 5px;
+        font-size: 14px;
     }
 }

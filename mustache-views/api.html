@@ -31,7 +31,7 @@
     <div class='main-doc-content'>
         <div class='doc-container'>
         <h2><a class='section-anchor' id='opt-in-anchor'>Opting a user in to the program.</a></h2>
-
+            
         Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
         We've made a script to simplify the process
         </div>
@@ -42,8 +42,8 @@
             </div>
             <pre>
                 <code class='language-html'>
-                    &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
-                    &lt;script src='my-script.js'&gt;&lt;/script&gt;
+    &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
+    &lt;script src='my-script.js'&gt;&lt;/script&gt;
                 </code>
             </pre>
 
@@ -53,7 +53,7 @@
 
             <pre>
                 <code class='language-js'>
-                    goodclient.onAccept(function)
+    goodclient.onAccept(function)
                 </code>
             </pre>
 
@@ -64,8 +64,8 @@
 
             <pre>
                 <code class='language-js'>
-                    goodclient.onAccept(func1, func2, func3)
-                    //runs func1, then func2, then func3
+    goodclient.onAccept(func1, func2, func3)
+    //runs func1, then func2, then func3
                 </code>
             </pre>
 
@@ -75,10 +75,10 @@
 
             <pre>
                 <code class='language-js'>
-                    goodclient.onAccept(func1)
-                    //do something else
-                    goodclient.onAccept(func2)
-                    //runs func1 then func2
+    goodclient.onAccept(func1)
+    //do something else
+    goodclient.onAccept(func2)
+    //runs func1 then func2
                 </code>
             </pre>
             
@@ -88,12 +88,12 @@
 
             <pre>
                 <code class='language-js'>
-                    //clicking this button opens goodcookie in another page
-                    document.getElementById('i-like-cookies')
-                            .addEventListener('click', event => {
-                                goodclient.optIn()
-                            }))
-                    //if user opts in, all onAccept functions that were registered will be run
+    //clicking this button opens goodcookie in another page
+    document.getElementById('i-like-cookies')
+            .addEventListener('click', event => {
+                goodclient.optIn()
+            }))
+    //if user opts in, all onAccept functions that were registered will be run
                 </code>
             </pre>
         </div>
@@ -108,17 +108,17 @@
 
             <pre>
                 <code class='language-js'>
-                    //open goodcookie in a new browser tab
-                    function optIn()) => {
-                        listenForPost()
-                        window.open('https://nick.pink/goodcookie')
-                    }
+    //open goodcookie in a new browser tab
+    function optIn()) => {
+        listenForPost()
+        window.open('https://nick.pink/goodcookie')
+    }
 
-                    //if the user opts in, goodcookie will send a message back
-                    window.onmessage = event => {
-                        if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
-                            //save a cookie
-                    }
+    //if the user opts in, goodcookie will send a message back
+    window.onmessage = event => {
+        if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
+            //save a cookie
+    }
                 </code>
             </pre>
         </div>
@@ -144,29 +144,34 @@
 
             <pre>
             <code contenteditable spellcheck="false" class='code language-js'>
-                const url = require('url'),
-                    app require('express')(),
-                    cookieParser = require('cookie-parser')
+    const url = require('url'),
+        app require('express')(),
+        cookieParser = require('cookie-parser')
 
-                app.get('/accept', (req, res) => {
-                    //save a cookie
-                })
-                app.get('/undeclared', (req, res) => {
-                    //prompt user about cookies
-                })
-                app.get('/', (req, res) => {
-                    res.redirect(url.format({
-                        pathname: 'https://nick.pink/goodcookie/verify/bounce',
-                        query: {
-                                acceptURL: 'https://mywebsite.io/accept',
-                                undeclaredURL: 'https://mywebsite.io/undeclared'
-                        }
-                })
+    app.get('/accept', (req, res) => {
+        //save a cookie
+        res.cookie('cookie-policy', 'accepts-all-cookies', {maxAge: 10800})
+    })
+    app.get('/undeclared', (req, res) => {
+        //prompt user about cookies
+    })
+    app.get('/', (req, res) => {
+        if(req.cookies && req.cookies['cookie-policy'] && req.cookies['cookie-policy'] === 'accepts-all-cookies'){
+            //send normal webpage
+        } else {
+            res.redirect(url.format({
+                pathname: 'https://nick.pink/goodcookie/verify/bounce',
+                query: {
+                        acceptURL: 'https://mywebsite.io/accept',
+                        undeclaredURL: 'https://mywebsite.io/undeclared'
+                }
+        }
+    })
             </code>
             </pre>
         </div>
     </div>
-        <div id='bounce-nginx' is='drop-down' label-text='  nginx'>
+        <!-- <div id='bounce-nginx' is='drop-down' label-text='  nginx'>
         <div>
             <pre>
             <code contenteditable spellcheck="false" class='code language-nginx'>
@@ -174,13 +179,13 @@
                     cookies eat;
 
                     location / {
-                        return 301 www.google.com
+                        return 302 https://nick.pink/verify/bounce?acceptURL=
                     }
                 }
             </code>
             </pre>
         </div>
-        </div>
+        </div> -->
         <!-- <div is='drop-down' label-text='  django'>
         <div>
             <pre>
@@ -209,7 +214,6 @@
         </div>
         </div> -->
 
-        <hr>
         <div class='doc-container'>
         <h2><a id='third-party-anchor' class='section-anchor'>3rd Party Cookies</a></h2>
         Many browsers and users are moving to block 3rd party cookies by default.
@@ -223,14 +227,12 @@
         //Thing
         Otherwise you will receive
         //Other thing
-
         </div>
         <div is='drop-down' label-text='fetch'>
             <div>
                 <pre>
                     <code contenteditable spellcheck="false"  class='code language-js'>
-                        fetch('everthing')
-                        .from('my-bank-account')
+
                     </code>
                 </pre>
             </div>
@@ -240,8 +242,20 @@
             <div>
                 <pre>
                     <code contenteditable spellcheck="false"  class='code language-js'>
-                        code?
-                        nginx COOOODE
+    const request = new XMLHttpRequest()
+    request.withCredentials = true
+    request.onreadystatechange = () => {
+        if (request.readyState === XMLHttpRequest.DONE){
+                    let {'user-accepts-all-cookies-on-all-sites': accepted} = JSON.parse(request.responseText)
+                    if(accepted){
+                        _inner46f002m._runOnAccepts()
+                    } else {
+                        _inner46f002m._runOnUndeclareds()
+                    }
+        }
+    }
+    request.open('GET', 'https//nick.pink/goodcookie/verify')
+    request.send()
                     </code>
                 </pre>
             </div>

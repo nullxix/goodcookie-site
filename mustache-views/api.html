@@ -17,30 +17,29 @@
     </header>
 <div class='doc-wrapper'>
     <div id='doc-nav'>
-        <div id='doc-nav-toggle-button'>&lt;</div>
+        <div id='doc-nav-toggle-wrapper'>
+            <div id='doc-nav-toggle-button'>➤</div>
+            <!-- ► -->
+        </div>
         <div id='doc-nav-items'>
-            <div class='doc-nav-i'>Thing 1</div>
-            <div class='doc-nav-i'>Thing 2</div>
-            <div class='doc-nav-i'>Thing 3</div>
+                <a class='doc-nav-i' href='#opt-in-anchor'>Opt In</a>
+                <a class='doc-nav-i' href='#verify-anchor'>Verify</a>
+                <a class='doc-nav-i' href='#third-party-anchor'>3rd party cookies</a>
         </div>
     </div>
 
     <div class='main-doc-content'>
         <div class='doc-container'>
-            <h2>Opting a user in to the program.</h2>
+        <h2><a class='section-anchor' id='opt-in-anchor'>Opting a user in to the program.</a></h2>
 
         Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
         We've made a script to simplify the process
         </div>
-        <div is='drop-down' label-text='> the easy way'>
+        <div id='opt-easy' is='drop-down' label-text='the easy way'>
         <div>
             <div class='doc-container'>
-
-                <h3>THE EASY WAY</h3>
                 include the goodclient cdn in your page.
             </div>
-
-            <div>vanilla js/html</div>
             <pre>
                 <code class='language-html'>
                     &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
@@ -98,8 +97,8 @@
                 </code>
             </pre>
         </div>
-        </div>
-        <div is='drop-down' label-text='> the hard way'>
+    </div>
+        <div id='opt-hard' is='drop-down' label-text='  the hard way'>
         <div>
 
             <div class='doc-container'>
@@ -123,11 +122,11 @@
                 </code>
             </pre>
         </div>
-        </div>
+    </div>
 
 
         <div class='doc-container'>
-            <h2>Checking if a user has opted-in</h2>
+            <h2><a id='verify-anchor' class='section-anchor'>Checking if a user has opted-in</a></h2>
         Users can be verified by redirecting req to goodcookie. Goodcookie then redirects to a new url based on their cookie policy
 
         redirect a  user to
@@ -139,12 +138,8 @@
 
 
         We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
-
-
-        <h3>code examples:</h3>
         </div>
-
-        <div is='drop-down' label-text='> express / node'>
+        <div id='bounce-express' is='drop-down' label-text='  express / node'>
         <div>
 
             <pre>
@@ -170,8 +165,8 @@
             </code>
             </pre>
         </div>
-        </div>
-        <div is='drop-down' label-text='> nginx'>
+    </div>
+        <div id='bounce-nginx' is='drop-down' label-text='  nginx'>
         <div>
             <pre>
             <code contenteditable spellcheck="false" class='code language-nginx'>
@@ -186,7 +181,7 @@
             </pre>
         </div>
         </div>
-        <div is='drop-down' label-text='> django'>
+        <!-- <div is='drop-down' label-text='  django'>
         <div>
             <pre>
             <code contenteditable spellcheck="false" class='code language-python'>
@@ -199,7 +194,7 @@
             </pre>
         </div>
         </div>
-        <div is='drop-down' label-text='> ruby on rails'>
+        <div is='drop-down' label-text='  ruby on rails'>
         <div>
             <pre>
             <code contenteditable spellcheck="false" class='code language-ruby'>
@@ -212,10 +207,11 @@
             </code>
             </pre>
         </div>
-        </div>
+        </div> -->
 
         <hr>
         <div class='doc-container'>
+        <h2><a id='third-party-anchor' class='section-anchor'>3rd Party Cookies</a></h2>
         Many browsers and users are moving to block 3rd party cookies by default.
         If you're bold, goodcookie allows verification via 3rd-party cookies, for compatible browsers.
 
@@ -228,31 +224,28 @@
         Otherwise you will receive
         //Other thing
 
-        Code examples
         </div>
-        <div class='code-label'>fetch</div>
-        <pre>
-            <code contenteditable spellcheck="false"  class='code language-js'>
-                fetch('everthing')
-                .from('my-bank-account')
-            </code>
-        </pre>
-        <div class='code-label'>xhttprequest</div>
+        <div is='drop-down' label-text='fetch'>
+            <div>
+                <pre>
+                    <code contenteditable spellcheck="false"  class='code language-js'>
+                        fetch('everthing')
+                        .from('my-bank-account')
+                    </code>
+                </pre>
+            </div>
+        </div>
 
-        <pre>
-            <code contenteditable spellcheck="false"  class='code language-js'>
-                code?
-                nginx COOOODE
-            </code>
-        </pre>
-        <div class='code-label'>hidden form</div>
-        <pre>
-            <code contenteditable spellcheck="false" class='code language-html'>
-                HTML FORM
-                nginx COOOODE
-            </code>
-        </pre>
-
+        <div is='drop-down' label-text='xhttprequest'>
+            <div>
+                <pre>
+                    <code contenteditable spellcheck="false"  class='code language-js'>
+                        code?
+                        nginx COOOODE
+                    </code>
+                </pre>
+            </div>
+        </div>
     </div>
 </div>
 <script src="../www/js/prism.js"></script>

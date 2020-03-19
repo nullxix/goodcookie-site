@@ -40,16 +40,17 @@
 
 .drop-controller + * {
     overflow: hidden;
-    transition: all 0.5s;
 }
 
 .drop-controller:checked + * {
     /* do NOTHING HAHAHAHA */
-    max-height: 4000px;
+    max-height: 2000px;
+    transition: all 0.8s;
 }
 
 .drop-controller:not(:checked) + * {
     max-height: 0px;
+    transition: all 0.1s;
 }
 
 /* 

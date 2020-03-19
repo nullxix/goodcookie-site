@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goodcookie - docs</title>
-    <link href='../www/styles/global.css' rel='stylesheet' />
+    <!-- <link href='../www/styles/global.css' rel='stylesheet' /> -->
     <link href="../www/styles/prism.css" rel="stylesheet" />
     <link href="../www/styles/tools.css" rel='stylesheet' />
     <link href="../www/styles/doc.css" rel='stylesheet' />
     <script src="../www/js/custom-elements.js" defer></script>
 </head>
 <body>
-    <header class='header meat'>
-        <h1 class='title'>goodcookie</h1>
-        <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
+    <header class='doc-header meat'>
+        <h1 class='doc-title'>goodcookie</h1>
+        
     </header>
 <div class='doc-wrapper'>
-    <div class='doc-nav'>
+    <div id='doc-nav'>
         <div id='doc-nav-toggle-button'>&lt;</div>
         <div id='doc-nav-items'>
-            <div>Thing 1</div>
-            <div>Thing 2</div>
-            <div>Thing 3</div>
+            <div class='doc-nav-i'>Thing 1</div>
+            <div class='doc-nav-i'>Thing 2</div>
+            <div class='doc-nav-i'>Thing 3</div>
         </div>
     </div>
 
     <div class='main-doc-content'>
-        <div class='container'>
+        <div class='doc-container'>
             <h2>Opting a user in to the program.</h2>
 
         Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
@@ -34,7 +34,7 @@
         </div>
         <div is='drop-down' label-text='> the easy way'>
         <div>
-            <div class='container'>
+            <div class='doc-container'>
 
                 <h3>THE EASY WAY</h3>
                 include the goodclient cdn in your page.
@@ -48,7 +48,7 @@
                 </code>
             </pre>
 
-            <div class='container'>
+            <div class='doc-container'>
             register actions to be performed if the user opts in
             </div>
 
@@ -58,7 +58,7 @@
                 </code>
             </pre>
 
-            <div class='container'>
+            <div class='doc-container'>
             you can register multiple actions at once
             registered functions are run in the order they're registered
             </div>
@@ -70,7 +70,7 @@
                 </code>
             </pre>
 
-            <div class='container'>
+            <div class='doc-container'>
             or register multiple actions at different times
             </div>
 
@@ -83,7 +83,7 @@
                 </code>
             </pre>
             
-            <div class='container'>  
+            <div class='doc-container'>  
             when the user decides they're sick of cookie questions
             </div>
 
@@ -102,7 +102,7 @@
         <div is='drop-down' label-text='> the hard way'>
         <div>
 
-            <div class='container'>
+            <div class='doc-container'>
             <h3>THE HARD WAY</h3>
             it's actually easier
             </div>
@@ -126,7 +126,7 @@
         </div>
 
 
-        <div class='container'>
+        <div class='doc-container'>
             <h2>Checking if a user has opted-in</h2>
         Users can be verified by redirecting req to goodcookie. Goodcookie then redirects to a new url based on their cookie policy
 
@@ -215,7 +215,7 @@
         </div>
 
         <hr>
-        <div class='container'>
+        <div class='doc-container'>
         Many browsers and users are moving to block 3rd party cookies by default.
         If you're bold, goodcookie allows verification via 3rd-party cookies, for compatible browsers.
 

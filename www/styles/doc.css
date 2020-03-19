@@ -1,18 +1,30 @@
+:root {
+    --doc-meat: rgb(255, 190, 60);
+}
+
+/*  */
+/*  */
+/* NECESSARY FOR SAFARI */
+/*  */
+/*  */
+.code {
+    word-wrap: normal
+}
+/*  */
+/*  */
+/* NECESSARY FOR SAFARI */
+/*  */
+/*  */
+
+.doc-header {
+    background: var(--doc-meat);
+    margin: 0;
+    padding: 10px 40px;
+}
 
 .doc-wrapper {
     display: flex;
     flex-direction: row;
-}
-
-.doc-nav {
-    box-sizing: border-box;
-    width: 10%;
-    display: inline-block;
-    background: var(--meat-bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    padding: 10px;
 }
 
 .main-doc-content {
@@ -22,3 +34,62 @@
     width: 67%;
     cursor: pointer;
 }
+
+.doc-container {
+    width: 70%;
+    margin: 20px auto;
+}
+
+
+/* 
+
+    NAVBAR
+
+*/
+
+#doc-nav {
+    box-sizing: border-box;
+    min-width: 10%;
+    display: inline-block;
+    background: var(--doc-meat);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 10px;
+
+    user-select: none;
+    transition: all 0.5s;
+}
+
+#doc-nav.toggle-narrow {
+    min-width: 3%;
+}
+
+#doc-nav-toggle-button {
+    font-size: 28px;
+    padding: 5px;
+    text-align: right;
+    transition: all 0.5s ease-in-out;
+}
+
+
+#doc-nav-toggle-button.toggle-down {
+    transform: rotate(-540deg);
+    text-align: center;
+}
+
+#doc-nav-items {
+    width: 100%;
+    transition: all 0.1s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#doc-nav-items.toggle-hide {
+    width: 0%;
+}
+
+.doc-nav-i {
+
+}
+

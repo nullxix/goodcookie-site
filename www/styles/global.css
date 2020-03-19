@@ -155,29 +155,6 @@ details {
     color: var(--meat-text)
 }
 
-.doc-wrapper {
-    display: flex;
-    flex-direction: row;
-}
-
-.doc-nav {
-    box-sizing: border-box;
-    width: 10%;
-    display: inline-block;
-    background: var(--meat-bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    padding: 10px;
-}
-
-.main-doc-content {
-    width: 90%;
-    display: inline-block;
-    color: var(--meat-text);
-    width: 67%;
-    cursor: pointer;
-}
 
 .gargantuan-text{
     font-size: 420px;

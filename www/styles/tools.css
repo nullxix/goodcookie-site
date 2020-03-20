@@ -7,7 +7,8 @@
 
 .drop-down-container {
     margin: 0;
-    padding: 0
+    padding: 0;
+    transition: all 0.5s;
 }
 
 .dropper-label {
@@ -37,12 +38,19 @@
     opacity: 0;
 }
 
+.drop-controller + * {
+    overflow: hidden;
+}
+
 .drop-controller:checked + * {
     /* do NOTHING HAHAHAHA */
+    max-height: 2000px;
+    transition: all 0.8s;
 }
 
 .drop-controller:not(:checked) + * {
-    display: none;
+    max-height: 0px;
+    transition: all 0.1s;
 }
 
 /* 

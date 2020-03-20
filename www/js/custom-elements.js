@@ -5,23 +5,31 @@ const _genDropDownId = () => {
 }
 
 class DropDown extends HTMLDivElement {
-
     constructor() {
         super()
-        const labelText = this.getAttribute('label-text')
+        const labelTextUp = "○ " + this.getAttribute('label-text')
+        const labelTextDown = "● " + this.getAttribute('label-text')
         const checkboxId = _genDropDownId()
 
         const label = document.createElement('label')
         const checkbox = document.createElement('input')
 
         label.setAttribute('for', checkboxId)
-        label.textContent = labelText
+        label.textContent = labelTextUp
         label.classList.add('dropper-label')
         checkbox.setAttribute('type','checkbox')
         checkbox.setAttribute('id', checkboxId)
         checkbox.classList.add('drop-controller')
         
         this.classList.add('drop-down-container')
+
+        this.onclick = event => {
+            if(!checkbox.checked){
+                label.textContent = labelTextUp
+            } else {
+                label.textContent = labelTextDown
+            }
+        }
 
         this.prepend(checkbox)
         this.prepend(label)

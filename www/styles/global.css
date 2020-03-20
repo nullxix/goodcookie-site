@@ -7,21 +7,6 @@
 }
 
 
-/*  */
-/*  */
-/* NECESSARY FOR SAFARI */
-/*  */
-/*  */
-.code {
-    word-wrap: normal
-}
-/*  */
-/*  */
-/* NECESSARY FOR SAFARI */
-/*  */
-/*  */
-
-
 body, html {
     padding: 0;
     margin: 0;
@@ -151,10 +136,9 @@ summary {
 }
 
 details {
-    color: var(--meat-text);
-    width: 67%;
-    cursor: pointer;
+    color: var(--meat-text)
 }
+
 
 .gargantuan-text{
     font-size: 420px;

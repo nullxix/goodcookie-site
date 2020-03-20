@@ -4,8 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goodcookie - docs</title>
+    <link href='../www/styles/global.css' rel='stylesheet' />
+    <link href="../www/styles/prism.css" rel="stylesheet" />
+    <link href="../www/styles/tools.css" rel='stylesheet' />
+    <script src="../www/js/custom-elements.js" defer></script>
 </head>
 <body>
-    {{domain}}
+    <header class='header meat'>
+        <h1 class='title'>goodcookie</h1>
+        <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
+    </header>
+<pre>
+<h2>Opting a user in to the program.</h2>
+
+Users  should be directed to the goodcookie website in another browser tab. If users then opt in, a message will be sent to the page they came from.
+We've made a script to simplify the process
+<div is='drop-down' label-text='> the easy way'>
+<div>
+    <h3>THE EASY WAY</h3>
+    --------------------------------------------------
+    include the goodclient cdn in your page.
+
+    <div>vanilla js/html</div>
+    <pre>
+        <code class='language-html'>
+            &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
+            &lt;script src='my-script.js'&gt;&lt;/script&gt;
+        </code>
+    </pre>
+
+    register actions to be performed if the user opts in
+
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(function)
+        </code>
+    </pre>
+
+    you can register multiple actions at once
+    registered functions are run in the order they're registered
+
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(func1, func2, func3)
+            //runs func1, then func2, then func3
+        </code>
+    </pre>
+    or register multiple actions at different times
+
+    <pre>
+        <code class='language-js'>
+            goodclient.onAccept(func1)
+            //do something else
+            goodclient.onAccept(func2)
+            //runs func1 then func2
+        </code>
+    </pre>
+
+    when the user decides they're sick of cookie questions
+    <pre>
+        <code class='language-js'>
+            //clicking this button opens goodcookie in another page
+            document.getElementById('i-like-cookies')
+                    .addEventListener('click', event => {
+                        goodclient.optIn()
+                    }))
+            //if user opts in, all onAccept functions that were registered will be run
+        </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> the hard way'>
+<div>
+    <h3>THE HARD WAY</h3>
+    it's actually easier
+
+    <pre>
+        <code class='language-js'>
+            //open goodcookie in a new browser tab
+            function optIn()) => {
+                listenForPost()
+                window.open('https://nick.pink/goodcookie')
+            }
+
+            //if the user opts in, goodcookie will send a message back
+            window.onmessage = event => {
+                if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
+                    //save a cookie
+            }
+        </code>
+    </pre>
+</div>
+</div>
+
+
+<h2>Checking if a user has opted-in</h2>
+-----------------------------------------------------------
+Users can be verified by redirecting req to goodcookie. Goodcookie then redirects to a new url based on their cookie policy
+
+redirect a  user to
+nick.pink/goodcookie/verify/bounce
+with the following parameters:
+
+acceptURL = url 2 send 2
+undeclared URL = url 2 send 2
+
+
+We recommend saving your own cookie, and only redirecting users who do not have that cookie saved
+</pre>
+code examples:
+<div is='drop-down' label-text='> express / node'>
+<div>
+
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-js'>
+
+        const url = require('url'),
+            app require('express')(),
+            cookieParser = require('cookie-parser')
+
+        app.get('/accept', (req, res) => {
+            //save a cookie
+        })
+        app.get('/undeclared', (req, res) => {
+            //prompt user about cookies
+        })
+        app.get('/', (req, res) => {
+            res.redirect(url.format({
+                pathname: 'https://nick.pink/goodcookie/verify/bounce',
+                query: {
+                        acceptURL: 'https://mywebsite.io/accept',
+                        undeclaredURL: 'https://mywebsite.io/undeclared'
+                }
+        })
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> nginx'>
+<div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-nginx'>
+
+        server {
+            cookies eat;
+
+            location / {
+                return 301 www.google.com
+            }
+        }
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> django'>
+<div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-python'>
+
+        from django.http import HttpResponse
+
+        def homePageView(request):
+            return HttpResponse('Hello, World!')
+    </code>
+    </pre>
+</div>
+</div>
+<div is='drop-down' label-text='> ruby on rails'>
+<div>
+    <pre>
+    <code contenteditable spellcheck="false" class='code language-ruby'>
+
+        class PagesController < ApplicationController
+            def home
+            puts "Honey, I'm home!"
+            end
+        end
+    </code>
+    </pre>
+</div>
+</div>
+
+<hr>
+
+Many browsers and users are moving to block 3rd party cookies by default.
+If you're bold, goodcookie allows verification via 3rd-party cookies, for compatible browsers.
+
+
+send a GET request to
+nick.pink/goodcookie/verify
+
+If the users have opted in, you will receive
+//Thing
+Otherwise you will receive
+//Other thing
+
+Code examples
+<div class='code-label'>fetch</div>
+<pre>
+    <code contenteditable spellcheck="false"  class='code language-js'>
+        fetch('everthing')
+        .from('my-bank-account')
+    </code>
+</pre>
+<div class='code-label'>xhttprequest</div>
+
+<pre>
+    <code contenteditable spellcheck="false"  class='code language-js'>
+        code?
+        nginx COOOODE
+    </code>
+</pre>
+<div class='code-label'>hidden form</div>
+<pre>
+    <code contenteditable spellcheck="false" class='code language-html'>
+        HTML FORM
+        nginx COOOODE
+    </code>
+</pre>
+<script src="../www/js/prism.js"></script>
 </body>
 </html>

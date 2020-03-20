@@ -1,0 +1,46 @@
+
+/* 
+
+        EVERYTHING FOR THE DROP-DOWN
+
+*/
+
+.dropper-label {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; 
+    background: rgb(41, 41, 41);
+    color: rgb(224, 224, 224);
+    font-size: 24px;
+    padding: 25px;
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+}
+
+.drop-controller {
+    /* 
+        TODO: make this position over the label 
+        to make life easier for touch screen
+    */
+    opacity: 0;
+}
+
+.drop-controller:checked {
+    opacity: 0;
+}
+
+.drop-controller:checked + * {
+    /* do NOTHING HAHAHAHA */
+}
+
+.drop-controller:not(:checked) + * {
+    display: none;
+}
+
+/* 
+
+    END DROP-DOWN STUFF
+
+*/

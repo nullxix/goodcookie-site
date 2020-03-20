@@ -20,7 +20,8 @@ class DropDown extends HTMLDivElement {
         checkbox.setAttribute('type','checkbox')
         checkbox.setAttribute('id', checkboxId)
         checkbox.classList.add('drop-controller')
-
+        
+        this.classList.add('drop-down-container')
 
         this.prepend(checkbox)
         this.prepend(label)

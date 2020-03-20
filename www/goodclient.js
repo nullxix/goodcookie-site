@@ -1,0 +1,1 @@
+/root/servers/goodcookie/goodclient/goodclient.js

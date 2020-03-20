@@ -42,14 +42,6 @@
 	console.log('000000')
 	console.log('{{cookieKey}}', '{{cookieValue}}')
 	const butter = document.getElementById('THETRUEBUTTON')
-        let listenerWindow = undefined
-        window.addEventListener('message', event => {
-            console.log('message received')
-            console.log(event.target.data)
-            if(event.data.includes('pastamarmalade')){
-                listenerWindow = event.target.source
-            }
-        })
         butter.addEventListener('click', () => {
             const expire = new Date(Date.now() + (1.5 * 365 * 24 * 60 * 60 * 1000)).toUTCString()
 		document.cookie = `{{cookieKey}}={{cookieValue}}; secure; samesite=none; domain=nick.pink; path=/; expires=${expire};`

@@ -57,9 +57,8 @@
         sendAcceptMessage()
     }
     const undeclareCookies = () => {
+        document.cookie = `{{cookieKey}}=""; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
         cookieAccept = false
-        const expire = new Date(0).toUTCString()
-        document.cookie = `{{cookieKey}}=""; expires=${expire};`
         writeButtonMessage('undeclared')
     }
     const writeButtonMessage = (which) => {

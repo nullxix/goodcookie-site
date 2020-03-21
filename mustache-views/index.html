@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>making cookies better</title>
-    <link href='../www/styles/tools.css' rel='stylesheet' type="text/css">
     <link href='../www/styles/global.css' rel='stylesheet' type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
 </head>
 <body class='veggie'>
     <header class='header'>
         <h1 class='title'>goodcookie</h1>
-        <nav class='nav'><span><a href='https://nick.pink/goodcookie/api'>for website developers</a></span></nav>
+        <nav class='nav'><span><a href='https://nick.pink/goodcookie/api'>for website developers</a></span><span><a href='https://nick.pink/goodcookie/allow-all-cookies-policy' class='policy'>read full policy</a></span></nav>
     </header>
 
     <h1 class="gargantuan-text">goodcookie</h1>
@@ -21,7 +20,7 @@
         <br/>  
         <details class='container detail'>
             <summary>what this is</summary>
-                <div id='explanation'>clicking this button sets a cookie that says 'I accept cookies' so websites won't have to ask you anymore</div>
+                <div id='explanation'>Most websites prompt users to accept the use of cookies on their site. Clicking the button at the bottom of this page sets a cookie that says 'I accept all cookies on all websites'. Websites that check for this cookie won't bother you</div>
                 <div class='brick'></div>
                 <div>websites must opt-in before this works on their website</div>
                 <div><a href='https://nick.pink/goodcookie/api'>learn how to integrate your website ⟶</a></div>
@@ -37,28 +36,47 @@
             <div>TL:DR; we like visiting new websites without clicking extra buttons</div>
         </details>
         <div class='center-contents column'>
-            <button id='THETRUEBUTTON'>allow cookies</button> 
+            <div id='button-container'>
+                <button id='THETRUEBUTTON'>accept all cookies on all websites</button> 
+            </div>
         </div>
+        
         <h1 class="gargantuan-text" id="dark">goodcookie</h1>
+        
     </div>
-
     <script>
-	console.log('000000')
-	console.log('{{cookieKey}}', '{{cookieValue}}')
 	const butter = document.getElementById('THETRUEBUTTON')
-        let listenerWindow = undefined
-        window.addEventListener('message', event => {
-            console.log('message received')
-            console.log(event.target.data)
-            if(event.data.includes('pastamarmalade')){
-                listenerWindow = event.target.source
-            }
-        })
+    let cookieAccept = false;
+    const acceptCookies = () => {
+        const expire = new Date(Date.now() + (1.5 * 365 * 24 * 60 * 60 * 1000)).toUTCString()
+        document.cookie = `{{cookieKey}}={{cookieValue}}; secure; samesite=none; domain=nick.pink; path=/; expires=${expire};`
+        cookieAccept = true;
+        writeButtonMessage('accepted')
+        sendAcceptMessage()
+    }
+    const undeclareCookies = () => {
+        cookieAccept = false
+        const expire = new Date(0).toUTCString()
+        document.cookie = `{{cookieKey}}=""; expires=${expire};`
+        writeButtonMessage('undeclared')
+    }
+    const writeButtonMessage = (which) => {
+        switch (which){
+            case 'accepted':
+                butter.innerText = "don't accept all cookies"
+                break;
+            case 'undeclared':
+                butter.innerText = "accept all cookies on all websites"
+                break;
+        }
+    }
         butter.addEventListener('click', () => {
-            const expire = new Date(Date.now() + (1.5 * 365 * 24 * 60 * 60 * 1000)).toUTCString()
-		document.cookie = `{{cookieKey}}={{cookieValue}}; secure; samesite=none; domain=nick.pink; path=/; expires=${expire};`
-            
-            sendAcceptMessage()
+            console.log('been clicked:', cookieAccept)
+            if(cookieAccept){
+                undeclareCookies()
+            } else {
+                acceptCookies()
+            }
         })
         function sendAcceptMessage(){
             console.log('sending!')
@@ -66,6 +84,16 @@
             window.opener.postMessage('{{acceptMessage}}', origin)
             console.log('message sent!')
         }
+        init = () => {
+            if(document.cookie.includes("{{cookieKey}}={{cookieValue}}")){
+                cookieAccept = true;
+                writeButtonMessage('accepted')
+            } else {
+                cookieAccept = false;
+                writeButtonMessage('undeclared')
+            }
+        }
+        init()
     </script>
 </body>
 </html>

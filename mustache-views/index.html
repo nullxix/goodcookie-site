@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>making cookies better</title>
     
-    <link href='goodcookie/static/styles/global.css' rel='stylesheet' type="text/css">
+    <link href='https://nick.pink/goodcookie/static/styles/global.css' rel='stylesheet' type="text/css">
 
     <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
 </head>
@@ -57,7 +57,7 @@
         sendAcceptMessage()
     }
     const undeclareCookies = () => {
-        document.cookie = `{{cookieKey}}=""; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+        document.cookie = `{{cookieKey}}=""; secure; samesite=none; domain=nick.pink; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`
         cookieAccept = false
         writeButtonMessage('undeclared')
     }

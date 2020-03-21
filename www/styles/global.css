@@ -4,6 +4,18 @@
     --veggie-bg: linear-gradient(#E0E0E0, #C5C5C5);
     --veggie-strong: black;
     --veggie-text: rgb(100, 81, 56);
+    --flat-bg: #F2F2F2;
+    --flat-text: #484848;
+    --white: white;
+
+
+    --meat-bg: rgb(177, 100, 37);
+    --meat-text: rgb(48, 29, 16);
+    --veggie-bg: linear-gradient(#C9F6DE, #9AECC0);
+    --veggie-strong: #367041;
+    --flat-bg: #ECFAF1;
+    --flat-text: #0D7A43;
+    --white: white;
 }
 
 
@@ -17,7 +29,7 @@ body, html {
 
 #footer {
     box-sizing: border-box;
-    background: #F2F2F2;
+    background: var(--flat-bg);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -36,7 +48,7 @@ body, html {
     float: right;
     text-align: right;
     z-index: 0;
-    color: #484848;
+    color: var(--flat-text);
 }
 
 .nav {
@@ -63,6 +75,8 @@ body, html {
 .container {
     margin: auto;
     padding-left: 20px;
+    box-sizing: border-box;
+    color: #0D7A43;
 }
 
 .meat {
@@ -84,28 +98,28 @@ body, html {
     top: 500px;
     font-size: 24px;
     text-align: center;
-    background-color: #F2F2F2;
+    background-color: var(--flat-bg);
     color: var(--veggie-bg);
     border: none;
     font-weight: 400;
     padding: 15px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 10px 10px 0px 0px white;
-    color: #484848;
+    box-shadow: 10px 10px 0px 0px var(--white);
+    color: var;
     cursor: pointer;
     outline: none;
 
     transition: .2s;
 }
 #THETRUEBUTTON:hover{
-    box-shadow: 5px 5px 0px 0px white;
+    box-shadow: 5px 5px 0px 0px var(--white);
 
     transition: 0s;
 }
 #THETRUEBUTTON:active{
-    background-color: white;
-    box-shadow: 0px 0px 0px 0px white;
+    background-color: var(--white);
+    box-shadow: 0px 0px 0px 0px var(--white);
     transition: 0s;
 }
 
@@ -118,7 +132,7 @@ body, html {
     z-index: 0;
     padding-top: 250px;
 
-    background-color: #F2F2F2;
+    background-color: var(--flat-bg);
     overflow: hidden;
     overflow-y: hidden;
 }
@@ -156,7 +170,7 @@ details {
 
 .gargantuan-text{
     font-size: 420px;
-    color: #f2f2f2;
+    color: var(--flat-bg);
     position: absolute;
     z-index: 0;
     transform: rotate(29.94deg);
@@ -168,12 +182,14 @@ details {
 
 
 #dark{
-    color: #484848;
+    color: var(--flat-text);
     z-index: 0;
 }
 
 a {
-    color: black;
+    font-size: 18px;
+    color: var(--flat-text);
+    text-decoration: none;
 }
 
 @media(min-width: 2020px){

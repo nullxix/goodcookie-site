@@ -63,6 +63,7 @@ body, html {
 .container {
     margin: auto;
     padding-left: 20px;
+    box-sizing: border-box;
 }
 
 .meat {

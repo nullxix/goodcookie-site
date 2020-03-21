@@ -12,8 +12,8 @@
 </head>
 <body>
     <header class='doc-header meat'>        
-	    <h1 class='doc-title'><a href='https://nick.pink/goodcookie' style='color: inherit; text-decoration: none;'>goodcookie</a></h1>
-        <nav class='nav'><span>for web users</span><span>for website developers</span></nav>
+
+    <h1 class='doc-title'><a href='https://nick.pink/goodcookie' style='color: inherit; text-decoration: none;'>goodcookie</a></h1>
     </header>
 <div class='doc-wrapper'>
     <div id='doc-nav'>
@@ -43,8 +43,7 @@
             <pre>
                 <code class='language-html'>
     &lt;script src='https://nick.pink/goodcookie/goodclient.min.js'&gt;&lt;/script&gt;
-    &lt;script src='my-script.js'&gt;&lt;/script&gt;
-                </code>
+    &lt;script src='my-script.js'&gt;&lt;/script&gt;</code>
             </pre>
 
             <div class='doc-container'>
@@ -53,20 +52,17 @@
 
             <pre>
                 <code class='language-js'>
-    goodclient.onAccept(function)
-                </code>
+    goodclient.onAccept(function)</code>
             </pre>
 
             <div class='doc-container'>
             you can register multiple actions at once
-            registered functions are run in the order they're registered
+            registered functions are run in the order they're registered 
             </div>
-
             <pre>
                 <code class='language-js'>
     goodclient.onAccept(func1, func2, func3)
-    //runs func1, then func2, then func3
-                </code>
+    //runs func1, then func2, then func3</code>
             </pre>
 
             <div class='doc-container'>
@@ -78,8 +74,7 @@
     goodclient.onAccept(func1)
     //do something else
     goodclient.onAccept(func2)
-    //runs func1 then func2
-                </code>
+    //runs func1 then func2</code>
             </pre>
             
             <div class='doc-container'>  
@@ -93,8 +88,7 @@
             .addEventListener('click', event => {
                 goodclient.optIn()
             }))
-    //if user opts in, all onAccept functions that were registered will be run
-                </code>
+    //if user opts in, all onAccept functions that were registered will be run</code>
             </pre>
         </div>
     </div>
@@ -109,7 +103,7 @@
             <pre>
                 <code class='language-js'>
     //open goodcookie in a new browser tab
-    function optIn()) => {
+    function optIn(){
         listenForPost()
         window.open('https://nick.pink/goodcookie')
     }
@@ -118,8 +112,7 @@
     window.onmessage = event => {
         if(event.data === 'OUR-GOOD-USER-HAS-ACCEPTED-ALL-COOKIES-ON-ALL-WEBSITES'){
             //save a cookie
-    }
-                </code>
+    }</code>
             </pre>
         </div>
     </div>
@@ -144,13 +137,15 @@
 
             <pre>
             <code contenteditable spellcheck="false" class='code language-js'>
+
     const url = require('url'),
-        app require('express')(),
-        cookieParser = require('cookie-parser')
+    const app = require('express')()
+
+    app.use(require('cookie-parser'))
 
     app.get('/accept', (req, res) => {
         //save a cookie
-        res.cookie('cookie-policy', 'accepts-all-cookies', {maxAge: 10800})
+        res.cookie('cookie-policy', 'accepts-all-cookies', {maxAge: 31540000000})
     })
     app.get('/undeclared', (req, res) => {
         //prompt user about cookies
@@ -162,12 +157,11 @@
             res.redirect(url.format({
                 pathname: 'https://nick.pink/goodcookie/verify/bounce',
                 query: {
-                        acceptURL: 'https://mywebsite.io/accept',
-                        undeclaredURL: 'https://mywebsite.io/undeclared'
+                    acceptURL: 'https://mywebsite.io/accept',
+                    undeclaredURL: 'https://mywebsite.io/undeclared'
                 }
         }
-    })
-            </code>
+    })</code>
             </pre>
         </div>
     </div>
@@ -221,42 +215,55 @@
 
 
         send a GET request to
-        nick.pink/goodcookie/verify
+        <pre><code contenteditable spellcheck="true" class='code language-js'>https://nick.pink/goodcookie/verify</code></pre>    
 
-        If the users have opted in, you will receive
-        //Thing
-        Otherwise you will receive
-        //Other thing
+        If the users have opted in, you will receive the following JSON response
+        <pre><code contenteditable spellcheck="true" class='code language-js'>{"user-accepts-all-cookies-on-all-sites": true}</code></pre>    
+
+        If they haven't you get
+        <pre><code contenteditable spellcheck="true" class='code language-js'>{"user-accepts-all-cookies-on-all-sites": false}</code></pre> 
         </div>
         <div is='drop-down' label-text='fetch'>
             <div>
                 <pre>
                     <code contenteditable spellcheck="false"  class='code language-js'>
-
-                    </code>
+        //credentials: 'include' is necessary for third-party cookies
+        fetch('https//nick.pink/goodcookie/verify', {credentials: 'include'})
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let {'user-accepts-all-cookies-on-all-sites': accepted} = data
+                if(accepted){
+                    //save a cookie
+                } else {
+                    //prompt user to opt in
+                }
+            });</code>
                 </pre>
             </div>
         </div>
 
-        <div is='drop-down' label-text='xhttprequest'>
+        <div is='drop-down' label-text='xmlhttprequest'>
             <div>
                 <pre>
                     <code contenteditable spellcheck="false"  class='code language-js'>
     const request = new XMLHttpRequest()
     request.withCredentials = true
+    //withCredentials = true is necessary for third-party cookies
     request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE){
-                    let {'user-accepts-all-cookies-on-all-sites': accepted} = JSON.parse(request.responseText)
-                    if(accepted){
-                        _inner46f002m._runOnAccepts()
-                    } else {
-                        _inner46f002m._runOnUndeclareds()
-                    }
+            const data = JSON.parse(request.responseText)
+            const {'user-accepts-all-cookies-on-all-sites': accepted} = data
+            if(accepted){
+                //save a cookie
+            } else {
+                //prompt user to opt in
+            }
         }
     }
     request.open('GET', 'https//nick.pink/goodcookie/verify')
-    request.send()
-                    </code>
+    request.send()</code>
                 </pre>
             </div>
         </div>

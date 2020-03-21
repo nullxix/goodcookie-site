@@ -15,6 +15,19 @@ body, html {
     box-sizing: border-box;
 }
 
+#footer {
+    box-sizing: border-box;
+    background: #F2F2F2;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    padding: 7px;
+}
+
 .header {
     margin: 0;
     padding: 30px;
@@ -156,6 +169,10 @@ details {
 #dark{
     color: #484848;
     z-index: 0;
+}
+
+a {
+    color: black;
 }
 
 @media(min-width: 2020px){

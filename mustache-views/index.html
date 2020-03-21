@@ -55,7 +55,7 @@
         sendAcceptMessage()
     }
     const undeclareCookies = () => {
-        document.cookie = `{{cookieKey}}=""; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+        document.cookie = `{{cookieKey}}=""; secure; samesite=none; domain=nick.pink; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`
         cookieAccept = false
         writeButtonMessage('undeclared')
     }
